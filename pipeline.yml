@@ -1,3 +1,8 @@
+parameters:
+  - name: forceRelease
+    type: boolean
+    default: false
+
 trigger:
   - main
 
@@ -7,5 +12,29 @@ pr:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-  - pwsh: Write-Host hello world
+stages:
+  - stage:
+    displayName: build
+    jobs:
+      - job:
+        steps:
+          - pwsh: .\Build.ps1
+            displayName: build module
+          - publish: ./output
+            artifact: module
+            displayName: publish module artifact
+  - stage:
+    displayName: publish
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    jobs:
+      - job:
+        steps:
+          - checkout: self
+            persistCredentials: true
+          - download: current
+            artifact: module
+            displayName: download module artifact
+          - script: curl https://raw.githubusercontent.com/gembaadvantage/uplift/main/scripts/install | bash
+            displayName: install uplift
+          - script: uplift release
+            displayName: uplift
