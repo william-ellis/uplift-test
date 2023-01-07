@@ -1,0 +1,11 @@
+trigger:
+  - main
+
+pr:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - pwsh: Write-Host hello world
