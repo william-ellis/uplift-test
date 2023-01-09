@@ -1,6 +1,6 @@
 hooks:
   before:
-    - echo "The version is: $VERSION"
+    - echo "Before"
     - uplift tag --current --next --silent
   after:
-    - echo "The version is: $VERSION"
+    - echo "After"
