@@ -1,5 +1,5 @@
 hooks:
   before:
-    - echo "Before"
+    - echo $VERSION
   after:
     - echo "After"
