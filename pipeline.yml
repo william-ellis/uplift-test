@@ -40,7 +40,5 @@ stages:
             displayName: download module artifact
           - script: curl https://raw.githubusercontent.com/gembaadvantage/uplift/main/scripts/install | bash
             displayName: install uplift
-          - script: |
-              git checkout -b next-release
-              uplift release
+          - script: uplift release
             displayName: uplift
