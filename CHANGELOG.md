@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Unreleased
 
+## [v0.3.0](https://github.com/william-ellis/uplift-test/releases/tag/v0.3.0) - 2023-01-09
+
+- [`7bf785c`](https://github.com/william-ellis/uplift-test/commit/7bf785c22941142d253c506e06337ed26359462f) ci: try different approach to printing version
+- [`0495d0e`](https://github.com/william-ellis/uplift-test/commit/0495d0e624d35380ef4df85defd58ef7a698a933) ci: cant call uplift from hooks (infinite recursion)
+- [`c08c971`](https://github.com/william-ellis/uplift-test/commit/c08c971cec34c93db688711331f1efca06a2ebf1) ci: try to diagnose issue with loading yaml file
+- [`9f1456c`](https://github.com/william-ellis/uplift-test/commit/9f1456c1e65d3722552922a7762aeed23979997b) refactor: change extension to yaml to keep the azure pipelines extensions from seeing it
+- [`c43836a`](https://github.com/william-ellis/uplift-test/commit/c43836ae6db16d767eca2bb2062703cf20bfb4b3) feat: testing release
+- [`95082a5`](https://github.com/william-ellis/uplift-test/commit/95082a50bf9fb1ac2872faeb6f64c52ee310f26a) ci: test hooks
+- [`97b32e8`](https://github.com/william-ellis/uplift-test/commit/97b32e80e4a9a9132fc35652e0912b0f559bc4e4) Revert "ci: push back release changes on new branch"
+- [`dbdd0f1`](https://github.com/william-ellis/uplift-test/commit/dbdd0f118ac66a80696d30553aa307725901cb6e) ci(uplift): uplifted for version v0.2.0
+- [`c5a2866`](https://github.com/william-ellis/uplift-test/commit/c5a2866afeffe9450a8e7d80f7d8d91585af50e9) ci(uplift): uplifted for version v0.2.0
+
 ## [v0.2.0](https://github.com/william-ellis/uplift-test/releases/tag/v0.2.0) - 2023-01-07
 
 - [`3e96034`](https://github.com/william-ellis/uplift-test/commit/3e9603469eec97f625e8b71856a5c7769e559fe6) ci: push back release changes on new branch
