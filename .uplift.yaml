@@ -1,6 +1,5 @@
 hooks:
   before:
     - echo "Before"
-    - uplift tag --current --next --silent
   after:
     - echo "After"
