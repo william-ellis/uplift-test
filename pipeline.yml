@@ -26,7 +26,7 @@ stages:
           - script: curl https://raw.githubusercontent.com/gembaadvantage/uplift/main/scripts/install | bash
             displayName: install uplift
           - pwsh: |
-              $nextVersion = uplift tag --next --silent --no-prefix
+              $nextVersion = uplift tag --next --silent --no-prefix --ignore-detached
 
               $nextVersion | Set-AzPipelineVariable version
               $null -ne $nextVersion | Set-AzPipelineVariable trigger
