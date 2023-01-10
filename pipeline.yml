@@ -73,4 +73,9 @@ stages:
                   workingDirectory: $(Build.SourcesDirectory)
                 - script: |
                     uplift changelog --no-stage --no-push --ignore-detached
+                    git switch main
+                    git add CHANGELOG.md
+                    git commit -m "chore: update changelog"
+                    git push
                   workingDirectory: $(Build.SourcesDirectory)
+                  displayName: update changelog
