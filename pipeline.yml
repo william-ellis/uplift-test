@@ -75,6 +75,8 @@ stages:
                     uplift changelog --no-stage --no-push --ignore-detached
                     git switch main
                     git add CHANGELOG.md
+                    git config --global user.name william-ellis
+                    git config --global user.email 11599796+william-ellis@users.noreply.github.com
                     git commit -m "chore: update changelog"
                     git push
                   workingDirectory: $(Build.SourcesDirectory)
