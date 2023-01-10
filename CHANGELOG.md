@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Unreleased
 
+## [v0.3.1](https://github.com/william-ellis/uplift-test/releases/tag/v0.3.1) - 2023-01-09
+
+- [`c33c41b`](https://github.com/william-ellis/uplift-test/commit/c33c41ba71ec55e44123f67a115662d989a85444) fix: testing bump
+
 ## [v0.3.0](https://github.com/william-ellis/uplift-test/releases/tag/v0.3.0) - 2023-01-09
 
 - [`7bf785c`](https://github.com/william-ellis/uplift-test/commit/7bf785c22941142d253c506e06337ed26359462f) ci: try different approach to printing version
