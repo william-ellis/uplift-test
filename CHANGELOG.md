@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Unreleased
 
+## [v0.6.0](https://github.com/william-ellis/uplift-test/releases/tag/v0.6.0) - 2023-01-10
+
+- [`34490c8`](https://github.com/william-ellis/uplift-test/commit/34490c862666821b5c49264cbf8b24c28102ec9d) ci: installing uplift is flaky
+- [`0a9609d`](https://github.com/william-ellis/uplift-test/commit/0a9609dfb2317874884e250dd7d703a9c4329a6d) ci: fix variable
+- [`f4fcae6`](https://github.com/william-ellis/uplift-test/commit/f4fcae6b67e12b2471c106572f76a38f008afa7e) feat: test release
+- [`c4f23fc`](https://github.com/william-ellis/uplift-test/commit/c4f23fc0ac19d6330b322f518e655f22915caa32) ci: write diagnostic messages
+- [`fe9acaf`](https://github.com/william-ellis/uplift-test/commit/fe9acaf822c5d929507009043a238d01d1a53d6e) feat: test release (4)
+- [`0cb1a6b`](https://github.com/william-ellis/uplift-test/commit/0cb1a6b47bbfd3b6e183f537eefd83eb41804cc1) feat: test release (3)
+- [`18f3018`](https://github.com/william-ellis/uplift-test/commit/18f301836de51cdc55a55efbac552f7d8dbb6785) ci: install uplift before using it
+- [`3e9fb55`](https://github.com/william-ellis/uplift-test/commit/3e9fb5500237a4d476d3c1067a0fd44e7c403936) feat: test release (2)
+- [`bf4d347`](https://github.com/william-ellis/uplift-test/commit/bf4d3473e33058c2885fe8f01332d5d1ecd43da9) feat: test release
+- [`8b064fc`](https://github.com/william-ellis/uplift-test/commit/8b064fcdeb97561502a0434f5a40fed09a9bb86e) ci: add concurrency check
+
 ## [v0.5.0](https://github.com/william-ellis/uplift-test/releases/tag/v0.5.0) - 2023-01-10
 
 - [`ffab465`](https://github.com/william-ellis/uplift-test/commit/ffab46552b22d9c09b55b5513d46d5f50b5cb319) feat: test release
