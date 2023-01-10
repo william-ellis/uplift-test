@@ -59,6 +59,6 @@ stages:
             displayName: tag release
             workingDirectory: $(Build.SourcesDirectory)
           - script: |
-              git switch -
+              git switch main
               uplift changelog
             workingDirectory: $(Build.SourcesDirectory)
