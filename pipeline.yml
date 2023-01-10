@@ -20,6 +20,7 @@ stages:
               Install-Module AzPipelineVariable -Force
           - script: curl https://raw.githubusercontent.com/gembaadvantage/uplift/main/scripts/install | bash
             displayName: install uplift
+            retryCountOnTaskFailure: 3
           - pwsh: |
               $isMainBranch = $Env:BUILD_SOURCEBRANCHNAME -eq 'main'
               $buildReason = $Env:BUILD_REASON
@@ -54,6 +55,7 @@ stages:
                   persistCredentials: true
                 - script: curl https://raw.githubusercontent.com/gembaadvantage/uplift/main/scripts/install | bash
                   displayName: install uplift
+                  retryCountOnTaskFailure: 3
                 - pwsh: |
                     $nextVersion = uplift tag --next --silent --no-prefix --ignore-detached
                     Write-Host "Built version: $Env:VERSION"
