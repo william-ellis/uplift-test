@@ -22,7 +22,7 @@ stages:
             fetchDepth: 0
             fetchTags: true
           - pwsh: |
-              Install-Module AzPipelineVariable
+              Install-Module AzPipelineVariable -Force
           - script: curl https://raw.githubusercontent.com/gembaadvantage/uplift/main/scripts/install | bash
             displayName: install uplift
           - pwsh: |
