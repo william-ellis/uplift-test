@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Unreleased
 
+## [v0.9.0](https://github.com/william-ellis/uplift-test/releases/tag/v0.9.0) - 2023-01-10
+
+- [`582ccf6`](https://github.com/william-ellis/uplift-test/commit/582ccf6637cd3efa9b893c71de9237dc9a11f5c6) feat: feature
+- [`fcca742`](https://github.com/william-ellis/uplift-test/commit/fcca742cda2a0c9c1fa4f4a4091ca05a6f72e3aa) fix: fix
+- [`55dc9d1`](https://github.com/william-ellis/uplift-test/commit/55dc9d1d88fbd66a67a6da147ab3adc66ae47596) chore: update changelog
+
 ## [v0.8.0](https://github.com/william-ellis/uplift-test/releases/tag/v0.8.0) - 2023-01-10
 
 - [`21a9f36`](https://github.com/william-ellis/uplift-test/commit/21a9f367c198bc293a572506c24bd9c45adaa3c0) feat: test release
