@@ -57,11 +57,9 @@ stages:
                   displayName: install uplift
                   retryCountOnTaskFailure: 3
                 - pwsh: |
-                    $nextVersion = uplift tag --next --silent --no-prefix --ignore-detached
-                    Write-Host "Built version: $Env:VERSION"
-                    Write-Host "Next version: $nextVersion"
-                    if ($nextVersion -ne $Env:VERSION) {
-                      throw 'Concurrency error. Bailing out.'
+                    $version = $Env:VERSION
+                    if (git tag --list "v$version") {
+                      throw "Conflict: Version $version already exists."
                     }
                 - download: current
                   artifact: module
@@ -74,6 +72,5 @@ stages:
                   displayName: tag release
                   workingDirectory: $(Build.SourcesDirectory)
                 - script: |
-                    git switch main
-                    uplift changelog
+                    uplift changelog --no-stage --no-push --ignore-detached
                   workingDirectory: $(Build.SourcesDirectory)
