@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Unreleased
 
+## [v0.8.0](https://github.com/william-ellis/uplift-test/releases/tag/v0.8.0) - 2023-01-10
+
+- [`21a9f36`](https://github.com/william-ellis/uplift-test/commit/21a9f367c198bc293a572506c24bd9c45adaa3c0) feat: test release
+- [`521356b`](https://github.com/william-ellis/uplift-test/commit/521356b9cdaf43b2fb115acb6f46f36f0ba3065d) ci: must configure git user before commiting
+
 ## [v0.6.0](https://github.com/william-ellis/uplift-test/releases/tag/v0.6.0) - 2023-01-10
 
 - [`34490c8`](https://github.com/william-ellis/uplift-test/commit/34490c862666821b5c49264cbf8b24c28102ec9d) ci: installing uplift is flaky
