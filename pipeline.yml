@@ -29,6 +29,7 @@ stages:
               ($null -ne $nextVersion) -and $isMainBranch -and ($buildReason -in 'IndividualCI','Manual')
               | Set-AzPipelineVariable trigger -Output -Verbose
             name: release
+            displayName: check if release should be triggered
           - pwsh: .\Build.ps1 -Version '$(release.version)'
             displayName: build module
           - publish: ./output
@@ -40,25 +41,35 @@ stages:
     variables:
       version: $[stageDependencies.ci.ci1.outputs['release.version']]
     jobs:
-      - job:
-        steps:
-          - checkout: self
-            fetchDepth: 0
-            fetchTags: true
-            persistCredentials: true
-          - download: current
-            artifact: module
-            displayName: download module artifact
-          - script: curl https://raw.githubusercontent.com/gembaadvantage/uplift/main/scripts/install | bash
-            displayName: install uplift
-          - script: echo "publish module to PSGallery"
-            displayName: publish module
-          - script: |
-              git tag v$(version)
-              git push origin v$(version)
-            displayName: tag release
-            workingDirectory: $(Build.SourcesDirectory)
-          - script: |
-              git switch main
-              uplift changelog
-            workingDirectory: $(Build.SourcesDirectory)
+      - deployment:
+        displayName: publish module
+        environment: psgallery
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: self
+                  fetchDepth: 0
+                  fetchTags: true
+                  persistCredentials: true
+                - pwsh: |
+                    $nextVersion = uplift tag --next --silent --no-prefix --ignore-detached
+                    if ($nextVersion -ne $VERSION) {
+                      throw 'Concurrency error. Bailing out.'
+                    }
+                - download: current
+                  artifact: module
+                  displayName: download module artifact
+                - script: curl https://raw.githubusercontent.com/gembaadvantage/uplift/main/scripts/install | bash
+                  displayName: install uplift
+                - script: echo "publish module to PSGallery"
+                  displayName: publish module
+                - script: |
+                    git tag v$(version)
+                    git push origin v$(version)
+                  displayName: tag release
+                  workingDirectory: $(Build.SourcesDirectory)
+                - script: |
+                    git switch main
+                    uplift changelog
+                  workingDirectory: $(Build.SourcesDirectory)
