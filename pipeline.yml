@@ -56,9 +56,9 @@ stages:
                   displayName: install uplift
                 - pwsh: |
                     $nextVersion = uplift tag --next --silent --no-prefix --ignore-detached
-                    Write-Host "Built version: $VERSION"
+                    Write-Host "Built version: $Env:VERSION"
                     Write-Host "Next version: $nextVersion"
-                    if ($nextVersion -ne $VERSION) {
+                    if ($nextVersion -ne $Env:VERSION) {
                       throw 'Concurrency error. Bailing out.'
                     }
                 - download: current
