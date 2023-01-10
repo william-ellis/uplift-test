@@ -52,6 +52,8 @@ stages:
                   fetchDepth: 0
                   fetchTags: true
                   persistCredentials: true
+                - script: curl https://raw.githubusercontent.com/gembaadvantage/uplift/main/scripts/install | bash
+                  displayName: install uplift
                 - pwsh: |
                     $nextVersion = uplift tag --next --silent --no-prefix --ignore-detached
                     if ($nextVersion -ne $VERSION) {
@@ -60,8 +62,6 @@ stages:
                 - download: current
                   artifact: module
                   displayName: download module artifact
-                - script: curl https://raw.githubusercontent.com/gembaadvantage/uplift/main/scripts/install | bash
-                  displayName: install uplift
                 - script: echo "publish module to PSGallery"
                   displayName: publish module
                 - script: |
