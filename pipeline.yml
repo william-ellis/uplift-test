@@ -18,7 +18,18 @@ stages:
     jobs:
       - job:
         steps:
-          - pwsh: .\Build.ps1
+          - checkout: self
+            fetchDepth: 0
+            fetchTags: true
+          - pwsh: |
+              Install-Module AzPipelineVariable
+          - pwsh: |
+              $nextVersion = uplift tag --next --silent --no-prefix
+
+              $nextVersion | Set-AzPipelineVariable version
+              $null -ne $nextVersion | Set-AzPipelineVariable trigger
+            name: release
+          - pwsh: .\Build.ps1 -Version $(release.version)
             displayName: build module
           - publish: ./output
             artifact: module
