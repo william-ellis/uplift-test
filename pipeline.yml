@@ -1,8 +1,3 @@
-parameters:
-  - name: forceRelease
-    type: boolean
-    default: false
-
 trigger:
   - main
 
@@ -13,10 +8,10 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-  - stage:
+  - stage: ci
     displayName: build
     jobs:
-      - job:
+      - job: ci1
         steps:
           - checkout: self
             fetchDepth: 0
@@ -26,10 +21,13 @@ stages:
           - script: curl https://raw.githubusercontent.com/gembaadvantage/uplift/main/scripts/install | bash
             displayName: install uplift
           - pwsh: |
+              $isMainBranch = $Env:BUILD_SOURCEBRANCHNAME -eq 'main'
+              $buildReason = $Env:BUILD_REASON
               $nextVersion = uplift tag --next --silent --no-prefix --ignore-detached
 
               "$nextVersion" | Set-AzPipelineVariable version -Output -Verbose
-              $null -ne $nextVersion | Set-AzPipelineVariable trigger -Output -Verbose
+              ($null -ne $nextVersion) -and $isMainBranch -and ($buildReason -in 'IndividualCI','Manual')
+              | Set-AzPipelineVariable trigger -Output -Verbose
             name: release
           - pwsh: .\Build.ps1 -Version '$(release.version)'
             displayName: build module
@@ -38,7 +36,9 @@ stages:
             displayName: publish module artifact
   - stage:
     displayName: publish
-    condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/main'), eq('${{ parameters.forceRelease }}', 'true')))
+    condition: and(succeeded(), eq(dependencies.ci.outputs['ci1.release.trigger'], 'True'))
+    variables:
+      version: $[stageDependencies.ci.ci1.outputs['release.version']]
     jobs:
       - job:
         steps:
@@ -46,12 +46,19 @@ stages:
             fetchDepth: 0
             fetchTags: true
             persistCredentials: true
-          - script: git checkout $(Build.SourceBranchName)
-            displayName: checkout triggering branch to get out of detached head state
           - download: current
             artifact: module
             displayName: download module artifact
           - script: curl https://raw.githubusercontent.com/gembaadvantage/uplift/main/scripts/install | bash
             displayName: install uplift
-          - script: uplift release
-            displayName: uplift
+          - script: echo "publish module to PSGallery"
+            displayName: publish module
+          - script: |
+              git tag v$(version)
+              git push origin v$(version)
+            displayName: tag release
+            workingDirectory: $(Build.SourcesDirectory)
+          - script: |
+              git switch -
+              uplift changelog
+            workingDirectory: $(Build.SourcesDirectory)
