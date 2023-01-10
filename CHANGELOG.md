@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Unreleased
 
+## [v0.5.0](https://github.com/william-ellis/uplift-test/releases/tag/v0.5.0) - 2023-01-10
+
+- [`ffab465`](https://github.com/william-ellis/uplift-test/commit/ffab46552b22d9c09b55b5513d46d5f50b5cb319) feat: test release
+- [`7a6a136`](https://github.com/william-ellis/uplift-test/commit/7a6a136d31a837611ca16ee2e40c15420db1e981) ci: just hard code branch name for now
+
 ## [v0.3.1](https://github.com/william-ellis/uplift-test/releases/tag/v0.3.1) - 2023-01-09
 
 - [`c33c41b`](https://github.com/william-ellis/uplift-test/commit/c33c41ba71ec55e44123f67a115662d989a85444) fix: testing bump
