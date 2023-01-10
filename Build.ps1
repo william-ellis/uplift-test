@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [AllowEmptyString]
+    [AllowEmptyString()]
     [Parameter(Mandatory)]
     [string]$Version
 )
