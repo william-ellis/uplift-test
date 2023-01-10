@@ -28,8 +28,8 @@ stages:
           - pwsh: |
               $nextVersion = uplift tag --next --silent --no-prefix --ignore-detached
 
-              $nextVersion | Set-AzPipelineVariable version
-              $null -ne $nextVersion | Set-AzPipelineVariable trigger
+              $nextVersion | Set-AzPipelineVariable version -Verbose
+              $null -ne $nextVersion | Set-AzPipelineVariable trigger -Verbose
             name: release
           - pwsh: .\Build.ps1 -Version $(release.version)
             displayName: build module
